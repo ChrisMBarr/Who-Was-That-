@@ -1,0 +1,93 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body {
+	  -webkit-perspective: 800; 
+	  -webkit-perspective-origin: 50% 200px;
+	
+	  -moz-perspective: 800; 
+	  -moz-perspective-origin: 50% 200px;
+	}
+
+	#cube {
+	  position: relative;
+	  margin: 100px auto 0;
+	  height: 400px;
+	  width: 400px;
+	  -webkit-transition: -webkit-transform 1s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+	  -webkit-transform-style: preserve-3d;
+
+	  -moz-transition: -moz-transform 1s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+	  -moz-transform-style: preserve-3d;
+	}
+
+	.face {
+	  position: absolute;
+	  height: 360px;
+	  width: 360px;
+	  padding: 20px;
+	  background-color: rgba(50, 50, 50, 0.7);
+	  font-size: 27px;
+	  line-height: 1em;
+	  color: #fff;
+	  border: 1px solid #555;
+	  border-radius: 3px;
+	}   
+
+	
+
+	#cube .one {
+	  -webkit-transform: translateZ(200px);
+	  -moz-transform: translateZ(200px);
+	}
+
+	#cube .two {
+	  -webkit-transform: rotateX(-90deg) translateZ(200px);
+	  -moz-transform: rotateX(-90deg) translateZ(200px);
+	}
+
+	#cube .three {
+	  -webkit-transform: rotateY(180deg) rotateZ(180deg) translateZ(200px);
+	  -moz-transform: rotateY(180deg) rotateZ(180deg) translateZ(200px);
+	}
+	#cube .four  {
+	  -webkit-transform: rotateX(90deg) translateZ(200px);
+	  -moz-transform: rotateX(90deg) translateZ(200px);
+	}
+
+	#cube.showOne{
+		-webkit-transform: rotateX(0deg);
+		-moz-transform: rotateX(0deg);
+	}
+	#cube.showTwo{
+		-webkit-transform: rotateX(90deg);
+		-moz-transform: rotateX(90deg);
+	}
+	#cube.showThree{
+		-webkit-transform: rotateX(180deg);
+		-moz-transform: rotateX(180deg);
+	}
+	#cube.showFour{
+		-webkit-transform: rotateX(270deg);
+		-moz-transform: rotateX(270deg);
+	}
+	
+
+	</style>
+</head>
+<body>
+
+	<button onclick="document.getElementById('cube').className = 'showOne';">Show Face 1</button>
+	<button onclick="document.getElementById('cube').className = 'showTwo';">Show Face 2</button>
+	<button onclick="document.getElementById('cube').className = 'showThree';">Show Face 3</button>
+	<button onclick="document.getElementById('cube').className = 'showFour';">Show Face 4</button>
+
+	<div id="cube">
+		<div class="face one">This is the front!</div>
+		<div class="face two">This is the 2nd side</div>
+		<div class="face three">This is the 3rd side</div>
+		<div class="face four">The is teh last side!</div>
+	</div>
+</body>
+</html>
