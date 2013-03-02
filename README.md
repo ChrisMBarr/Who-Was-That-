@@ -1,4 +1,4 @@
-Who-Was-That-
+Who Was That?
 =============
 
 Figure out who acted in both of the movie titles you typed in!
