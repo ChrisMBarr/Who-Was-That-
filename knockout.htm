@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang='en-us'>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+	<title dir='ltr'>Who Was That?</title>
+	<meta name='viewport' content='width=device-width'>
+	<link  href='css/knockout-styles.css' rel='stylesheet' media='screen'/>
+	<link  href='http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.23/themes/start/jquery-ui.css' rel='stylesheet' media='screen' />
+	<script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js'></script>
+	<script src='http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.23/jquery-ui.min.js'></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.debug.js"></script>
+	<script src='js/main-knockout.js'></script>
+</head>
+<body>
+	<section id='search'>
+		<h1>Who was that person in those movies?</h1>
+		<span>He/She was in </span>
+		<input type='search'  data-completesearch="false"/>
+		<span id='and'>and</span>
+		<input type='search'  data-completesearch="false"/>
+		<div class='clear'></div>
+	</section>
+
+	<section id='results' data-bind="visible: SearchComplete()">
+		<!-- ko foreach: Movies -->
+			<div class='movie'>
+				<img data-bind="attr: {src: Poster}" />
+				<h2><span data-bind="text: Title()"></span> <small data-bind="text: '('+Year()+')'"></small></h2>
+				<a href='#' target='_blank' data-bind="attr: {href: ImdbLink}">View on IMDB</a>
+				<p data-bind="text: Description"></p>
+				<div class='clear'></div>
+				<!-- ko foreach: PeopleGroups -->
+					<div class='list'>
+						<strong data-bind="text: Title"></strong> <span data-bind="visible: People.length== 1, text: People[0]"></span>
+						<ul data-bind="visible: People.length > 1, foreach: People">
+							<li data-bind="text: $data"></li>
+						</ul>
+					</div>
+				<!-- /ko -->
+			</div>
+		<!-- /ko -->
+		<div class='clear'></div>
+	</section>
+
+	<section id='matches' data-bind="visible: Matches().length > 0 && SearchComplete()">
+		<h3>Matching People</h3>
+		<ul data-bind="foreach: Matches">
+			<li data-bind="text: $data"></li>
+		</ul>
+	</section>
+
+	<section id='no-matches' data-bind="visible: Matches().length == 0 && SearchComplete()">
+		<h3>Sorry, we couldn't find any matching people between these two movies!</h3>
+		<h4>Maybe try viewing these pages on IMDB and see if you can find something we missed</h4>
+	</section>
+
+</body>
+</html>
